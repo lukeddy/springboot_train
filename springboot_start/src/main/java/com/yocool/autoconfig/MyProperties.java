@@ -1,4 +1,4 @@
-package com.yocool.config;
+package com.yocool.autoconfig;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

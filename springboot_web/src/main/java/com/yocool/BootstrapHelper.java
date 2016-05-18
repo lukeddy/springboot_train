@@ -1,6 +1,6 @@
 package com.yocool;
 
-import com.yocool.autoconfig.MyProperties;
+import com.yocool.autoconfig.GlobalConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,32 +13,21 @@ import org.springframework.stereotype.Component;
  * 项目启动时做一些初始化工作
  */
 @Component
-@EnableConfigurationProperties(MyProperties.class)
+@EnableConfigurationProperties(GlobalConfig.class)
 public class BootstrapHelper implements ApplicationListener<ContextRefreshedEvent> {
 
     private static final Logger logger = LoggerFactory.getLogger(BootstrapHelper.class);
 
     @Autowired
-    private MyProperties myProperties;
+    private GlobalConfig globalConfig;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
       logger.info("项目开始启动....");
       logger.info("项目启动初始化工作开始..");
-        System.out.println(myProperties.getEnv());
-        System.out.println(myProperties.getTestURL());
-        System.out.println(myProperties.getDefaultProperties());
-        System.out.println(myProperties.getMyConfig1());
-        System.out.println(myProperties.getMyConfig2());
-        System.out.println(myProperties.getMyMap());
-
-        System.out.println("===万能的分割线===");
-        System.out.println(myProperties.getPersonList());
-
+//        System.out.println(globalConfig.getEnv());
+//        System.out.println(globalConfig.getTestURL());
+//        System.out.println(globalConfig.getMyMap());
       logger.info("项目启动初始化工作完成！Great!");
-
-
-
-
     }
 }

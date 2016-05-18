@@ -1,0 +1,7 @@
+#使用 YAML
+com:
+    yocool:
+       config:
+        # 人物列表值
+           personList:
+                - {name: 张三,gender: 男,age:100}

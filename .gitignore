@@ -9,3 +9,6 @@
 /springboot_web/target
 /springboot_web/mvnw
 /springboot_web/mvnw.cmd
+/springboot_mongo/springboot_mongo.iml
+/springboot_mongo/.idea
+/springboot_mongo/target

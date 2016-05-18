@@ -3,6 +3,9 @@ package com.yocool.model;
 
 import org.springframework.data.annotation.Id;
 
+/**
+ * Author tangzq
+ */
 public class Book {
     @Id
     private String id;

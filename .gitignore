@@ -15,3 +15,6 @@
 /springboot-springdata-mongo/target
 /springboot-springdata-mongo/springboot-springdata-mongo.iml
 /springboot-springdata-mongo/.idea
+.idea
+target
+springboot-cassandra.iml

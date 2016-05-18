@@ -12,3 +12,6 @@
 /springboot_mongo/springboot_mongo.iml
 /springboot_mongo/.idea
 /springboot_mongo/target
+/springboot-springdata-mongo/target
+/springboot-springdata-mongo/springboot-springdata-mongo.iml
+/springboot-springdata-mongo/.idea

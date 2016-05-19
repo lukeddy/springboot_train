@@ -1,5 +1,6 @@
 package com.yocool;
 
+import com.datastax.driver.core.querybuilder.Select;
 import com.datastax.driver.core.utils.UUIDs;
 import com.yocool.dao.PersonPagerRepository;
 import com.yocool.dao.PersonRepository;
@@ -8,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.data.cassandra.core.CassandraTemplate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +17,11 @@ import org.springframework.data.querydsl.QPageRequest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.util.Assert;
+
+import java.util.List;
+
+import static com.datastax.driver.core.querybuilder.QueryBuilder.eq;
+import static com.datastax.driver.core.querybuilder.QueryBuilder.select;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SpringbootCassandraApplication.class)
@@ -25,7 +32,8 @@ public class SpringbootCassandraApplicationTests {
 	private PersonRepository personRepository;
 
 	@Autowired
-	private PersonPagerRepository personPagerRepository;
+	private CassandraTemplate cassandraTemplate;
+
 
 	@Test
 	public void initData(){
@@ -65,6 +73,17 @@ public class SpringbootCassandraApplicationTests {
 
 	@Test
 	public void testPagination(){
-		Page<Person> users = personPagerRepository.findAll(new QPageRequest(1, 2));
+//		Page<Person> users = personPagerRepository.findAll(new QPageRequest(1, 2));
+		Select selectRecord = select()
+				.from("person")
+				.where(eq("name", "用户名86"))
+				.and(eq("age", 104))
+				.limit(10).allowFiltering();
+
+		List<Person> list= cassandraTemplate.select(selectRecord,Person.class);
+		Assert.notNull(list);
+		for(Person person:list){
+			System.out.println(person.toString());
+		}
 	}
 }

@@ -21,3 +21,5 @@ springboot-cassandra.iml
 /springboot-redis/springboot-redis.iml
 /springboot-redis/.idea
 /springboot-redis/target
+springboot-swagger.iml
+springboot-web-swagger2.iml

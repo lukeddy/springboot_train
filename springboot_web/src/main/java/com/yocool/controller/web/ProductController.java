@@ -25,7 +25,6 @@ public class ProductController {
      */
     @RequestMapping("/list")
     public String prodList(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
         model.addAttribute("prodList",productService.getAllProd());
         return "product/list";
     }

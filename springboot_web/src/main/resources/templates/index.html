@@ -2,12 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>首页</title>
+    <!--/*/ <th:block th:include="common/headerinc :: head"></th:block> /*/-->
 </head>
 <body>
-  <h1>Hello World</h1>
-  <ul>
-      <li><a href="/product/list">产品列表</a></li>
-  </ul>
+  <!--/*/ <th:block th:include="common/nav :: header"></th:block> /*/-->
+  <div class="jumbotron">
+      <div class="row text-center">
+          <div class="">
+              <h2>Spring Boot WEB项目</h2>
+              <h3>
+                  技术栈：SpringBoot+Thymeleaf
+              </h3>
+
+          </div>
+      </div>
+      <div class="row text-center">
+          <img src="http://www.thymeleaf.org/images/thymeleaf.png"/>
+      </div>
+  </div>
 </body>
 </html>

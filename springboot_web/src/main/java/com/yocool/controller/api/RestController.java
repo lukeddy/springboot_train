@@ -1,19 +1,18 @@
-package com.yocool.controller;
+package com.yocool.controller.api;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * API控制器
+ * REST API接口
+ * Author tangzq.
  */
-@RestController
+@org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
-public class HomeController {
-
+public class RestController {
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public Map<String,Object> listData(){
         Map<String,Object> data=new HashMap<>();
@@ -22,5 +21,4 @@ public class HomeController {
         data.put("age",20);
         return data;
     }
-
 }

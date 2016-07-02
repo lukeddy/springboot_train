@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h3>添加产品详情：</h3>
+<form action="/product/add" method="post">
+    <p>编号：<input type="text" name="id"/></p>
+    <p>名称：<input type="text" name="prodName"/></p>
+    <p>厂商：<input type="text" name="prodCompany"/></p>
+    <p>描述：<input type="text" name="prodDesc"/></p>
+    <p>
+        <button type="submit">提交</button>
+        <button type="reset">重置</button>
+    </p>
+</form>
+<br/>
+<a href="/product/list">返回列表</a>
+</body>
+</html>

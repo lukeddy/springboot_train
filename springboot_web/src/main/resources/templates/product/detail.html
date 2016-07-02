@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h3>产品详情：</h3>
+<p>名称：<span th:text="${product.prodName}">名称</span></p>
+<p>厂商：<span th:text="${product.prodCompany}">厂家</span></p>
+<p>名称：<span th:text="${product.prodDesc}">详情</span></p>
+<br/>
+<a href="/product/list">返回列表</a>
+</body>
+</html>

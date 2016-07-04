@@ -11,6 +11,7 @@ import java.util.List;
 public interface ProductService {
     List<Product> getAllProd();
     Product getProdById(int id);
+    boolean isProdExist(int id);
     void deleteProdById(int id);
     void addProduct(Product prod);
 }

@@ -39,6 +39,14 @@ public class ProductServiceImpl  implements ProductService{
     }
 
     @Override
+    public boolean isProdExist(int id) {
+        for(Product prod:products){
+            if(prod.getId()==id) return true;
+        }
+        return false;
+    }
+
+    @Override
     public void deleteProdById(int id) {
         for(Product prod:products){
             if(prod.getId()==id) products.remove(prod);

@@ -1,5 +1,6 @@
 package com.yocool.controller.web;
 
+import com.yocool.exception.ProductNotFoundException;
 import com.yocool.model.Product;
 import com.yocool.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,9 @@ public class ProductController {
      */
     @RequestMapping("/detail/{id}")
     public String prodDetail(@PathVariable("id")int id,Model model){
+        if(!productService.isProdExist(id)){
+            throw new ProductNotFoundException(id);
+        }
         model.addAttribute("product",productService.getProdById(id));
         return "product/detail";
     }
@@ -71,6 +75,4 @@ public class ProductController {
         productService.deleteProdById(id);
         return "redirect:/product/list";
     }
-
-
 }

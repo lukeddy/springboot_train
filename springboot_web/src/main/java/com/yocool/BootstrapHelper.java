@@ -25,9 +25,9 @@ public class BootstrapHelper implements ApplicationListener<ContextRefreshedEven
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
       logger.info("项目开始启动....");
       logger.info("项目启动初始化工作开始..");
-//        System.out.println(globalConfig.getEnv());
-//        System.out.println(globalConfig.getTestURL());
-//        System.out.println(globalConfig.getMyMap());
+      logger.info("环境："+globalConfig.getEnv());
+      logger.info("测试配置1："+globalConfig.getTestURL());
+      logger.info("测试配置2："+globalConfig.getEnv());
       logger.info("项目启动初始化工作完成！Great!");
     }
 }

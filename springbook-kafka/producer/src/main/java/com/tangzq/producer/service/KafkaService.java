@@ -81,7 +81,7 @@ public class KafkaService {
             return;
         }
         // Create a ZooKeeper client
-        ZkClient zkClient = new ZkClient(zookeeperProperties.getHost() + ":" + zookeeperProperties.getPort(),
+        ZkClient zkClient = new ZkClient(zookeeperProperties.getZookeeperHosts(),
                                          zookeeperProperties.getSessionTimeoutMs(),
                                          zookeeperProperties.getConnectionTimeoutMs(),
                                          ZKStringSerializer$.MODULE$);

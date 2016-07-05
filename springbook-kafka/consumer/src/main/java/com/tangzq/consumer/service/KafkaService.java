@@ -168,6 +168,6 @@ public class KafkaService {
     }
 
     public String getZookeeperConnect() {
-        return zookeeperProperties.getHost() + ":" + zookeeperProperties.getPort();
+        return zookeeperProperties.getZookeeperHosts();
     }
 }

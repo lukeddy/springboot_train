@@ -34,8 +34,7 @@ public class ConsumerController {
 
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String home() {
-        logger.debug("zookeeperHost: {}", zookeeperProperties.getHost());
-        logger.debug("zookeeperPort: {}", zookeeperProperties.getPort());
+        logger.debug("zookeeperHosts: {}", zookeeperProperties.getZookeeperHosts());
         logger.debug("kafkaHost: {}", kafkaProperties.getHost());
         logger.debug("kafkaPort: {}", kafkaProperties.getPort());
 

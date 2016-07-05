@@ -38,8 +38,7 @@ public class BootstrapHelper implements ApplicationListener<ContextRefreshedEven
         ZkClient zkClient = null;
         try{
             String [] topics={"topic01","topic02","topic03","topic04"};
-            String zookeeperHosts = zookeeperProperties.getZookeeperAddress(); //多台用逗号分隔-> String zookeeperHosts = "192.168.20.1:2181,192.168.20.2:2181";
-            zkClient = new ZkClient(zookeeperHosts, 10000, 10000);
+            zkClient = new ZkClient(zookeeperProperties.getZookeeperHosts(), zookeeperProperties.getSessionTimeoutMs(), zookeeperProperties.getConnectionTimeoutMs());
             for(String topic:topics){
                 if(!AdminUtils.topicExists(zkClient,topic)){
                     AdminUtils.createTopic(zkClient, topic, 1, 1, new Properties());

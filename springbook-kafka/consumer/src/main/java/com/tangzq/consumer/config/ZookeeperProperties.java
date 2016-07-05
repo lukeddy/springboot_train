@@ -6,25 +6,16 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties("zookeeper")
 public class ZookeeperProperties {
-    private String host;
-    private int port;
+    private String zookeeperHosts;
     private int sessionTimeoutMs;
     private int connectionTimeoutMs;
 
-    public String getHost() {
-        return host;
+    public String getZookeeperHosts() {
+        return zookeeperHosts;
     }
 
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
+    public void setZookeeperHosts(String zookeeperHosts) {
+        this.zookeeperHosts = zookeeperHosts;
     }
 
     public int getSessionTimeoutMs() {
@@ -43,7 +34,5 @@ public class ZookeeperProperties {
         this.connectionTimeoutMs = connectionTimeoutMs;
     }
 
-    public String getZookeeperAddress() {
-        return host + ":" + port;
-    }
+
 }

@@ -37,7 +37,7 @@ public class KafkaConfig {
         logger.info("starting consumer..");
 
         KafkaHighLevelConsumerMessageSourceSpec messageSourceSpec = Kafka.inboundChannelAdapter(
-                new ZookeeperConnect(zookeeperProperties.getZookeeperAddress()))
+                new ZookeeperConnect(zookeeperProperties.getZookeeperHosts()))
                 .consumerProperties(props ->
                         props.put("auto.offset.reset", "smallest")
                                 .put("auto.commit.interval.ms", "100"))

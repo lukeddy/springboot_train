@@ -3,8 +3,7 @@ spring:
     cache: true
 
 zookeeper:
-  host: zookeeper
-  port: 2181
+  zookeeperHosts: 10.0.0.215:2181,10.0.0.215:2182,10.0.0.215:2183
   sessionTimeoutMs: 10000
   connectionTimeoutMs: 10000
 

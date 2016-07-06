@@ -1,14 +1,14 @@
 spring:
   thymeleaf:
-    cache: false
+    cache: true
 
 zookeeper:
-  zookeeperHosts: 127.0.0.1:2181
+  zookeeperHosts: 10.0.0.215:2181,10.0.0.215:2182,10.0.0.215:2183
   sessionTimeoutMs: 10000
   connectionTimeoutMs: 10000
 
 kafka:
-  host: 127.0.0.1
+  host: kafka
   port: 9092
   soTimeout: 100000
   bufferSize: 65536

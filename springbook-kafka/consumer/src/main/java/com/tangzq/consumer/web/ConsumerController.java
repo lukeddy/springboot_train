@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.PollableChannel;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +40,7 @@ public class ConsumerController {
         logger.debug("kafkaHost: {}", kafkaProperties.getHost());
         logger.debug("kafkaPort: {}", kafkaProperties.getPort());
 
-        /**
+
         PollableChannel fromKafka = context.getBean("received", PollableChannel.class);
         Message<?> received = fromKafka.receive(10000);
         while (received != null) {
@@ -46,7 +48,7 @@ public class ConsumerController {
             logger.debug("Headers: " + received.getHeaders());
             logger.debug("Payload: " + received.getPayload());
             received = fromKafka.receive(10000);
-        }**/
+        }
 
         return "index";
     }

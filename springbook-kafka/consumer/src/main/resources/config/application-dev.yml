@@ -3,12 +3,12 @@ spring:
     cache: false
 
 zookeeper:
-  zookeeperHosts: 10.0.0.215:2181,10.0.0.215:2182,10.0.0.215:2183
+  zookeeperHosts: 127.0.0.1:2181
   sessionTimeoutMs: 10000
   connectionTimeoutMs: 10000
 
 kafka:
-  host: 10.0.0.215
+  host: 127.0.0.1
   port: 9092
   soTimeout: 100000
   bufferSize: 65536

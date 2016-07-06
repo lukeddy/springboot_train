@@ -140,7 +140,7 @@
 
             function testTopic01() {
                 console.log('Sending test to topic-01!');
-                stomp.send("/topic/topic-01", {}, JSON.stringify({ 'message': 'test for topic-01!' }));
+                stomp.send("/topic/topic-01", {}, JSON.stringify({ 'message': 'test for topic-01!'+new Date().getTime }));
                 $('#topic-01').append("<b>test for topic-01!</b><br/>")
             }
             function testTopic02() {

@@ -1,5 +1,6 @@
 package com.tangzq.producer.producer;
 
+import com.tangzq.producer.config.KafkaProperties;
 import com.tangzq.producer.model.Product;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
@@ -20,22 +21,19 @@ public class KafkaObjectProducer extends Thread {
     {
         props.put("serializer.class", "com.tangzq.producer.serializer.ProductSerializer");
         props.put("key.serializer.class", "kafka.serializer.StringEncoder");
-        props.put("metadata.broker.list", "127.0.0.1:9092");
-        producer = new kafka.javaapi.producer.Producer<Integer, Product>(new ProducerConfig(props));
+        props.put("metadata.broker.list", KafkaProperties.kafkaServerURL+":"+KafkaProperties.kafkaServerPort);
+        producer = new kafka.javaapi.producer.Producer(new ProducerConfig(props));
         this.topic = topic;
     }
+
     @Override
     public void run() {
         int messageNo = 1;
         while (true)
         {
-            Product prod=new Product();
-            prod.setId(123+messageNo);
-            prod.setName("Android系列"+messageNo);
-            prod.setCompany("Google");
-            prod.setDate(new Date());
+            Product prod=new Product(123+messageNo,"Android系列"+messageNo,"Google",new Date());
             System.out.println("Send:" + prod.toString());
-            producer.send(new KeyedMessage<Integer, Product>(topic, prod));
+            producer.send(new KeyedMessage(topic, prod));
             messageNo++;
             try {
                 sleep(3000);

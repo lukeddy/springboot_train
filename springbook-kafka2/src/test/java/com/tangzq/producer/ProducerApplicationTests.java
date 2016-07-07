@@ -41,6 +41,6 @@ public class ProducerApplicationTests {
 		producer.start();
 		KafkaObjectConsumer consumer=new KafkaObjectConsumer(KafkaProperties.topic);
 		consumer.start();
-		Thread.sleep(30000);
+		Thread.sleep(60000);
 	}
 }

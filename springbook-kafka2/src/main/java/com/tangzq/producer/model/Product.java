@@ -45,6 +45,16 @@ public class Product implements Serializable{
         this.date = date;
     }
 
+    public Product() {
+    }
+
+    public Product(int id, String name, String company, Date date) {
+        this.id = id;
+        this.name = name;
+        this.company = company;
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Product{" +

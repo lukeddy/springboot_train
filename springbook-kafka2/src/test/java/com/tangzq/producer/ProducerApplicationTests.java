@@ -3,6 +3,8 @@ package com.tangzq.producer;
 import com.tangzq.producer.config.KafkaProperties;
 import com.tangzq.producer.consumer.KafkaConsumer;
 import com.tangzq.producer.consumer.KafkaConsumer2;
+import com.tangzq.producer.consumer.KafkaObjectConsumer;
+import com.tangzq.producer.producer.KafkaObjectProducer;
 import com.tangzq.producer.producer.KafkaStringProducer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +32,15 @@ public class ProducerApplicationTests {
 		producerThread.start();
 		KafkaConsumer2 consumerThread = new KafkaConsumer2(KafkaProperties.topic);
 		consumerThread.start();
-		Thread.sleep(20000);
+		Thread.sleep(10000);
+	}
+
+	@Test
+	public void testObjectProducerAndConsumer() throws InterruptedException {
+		KafkaObjectProducer producer=new KafkaObjectProducer(KafkaProperties.topic);
+		producer.start();
+		KafkaObjectConsumer consumer=new KafkaObjectConsumer(KafkaProperties.topic);
+		consumer.start();
+		Thread.sleep(30000);
 	}
 }

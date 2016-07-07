@@ -11,13 +11,15 @@ import java.util.Properties;
  * Author tangzq.
  */
 public class KafkaObjectProducer extends Thread {
+
     private final kafka.javaapi.producer.Producer<Integer, Product> producer;
     private final String topic;
     private final Properties props = new Properties();
 
     public KafkaObjectProducer(String topic)
     {
-        props.put("serializer.class", "kafka.serializer.StringEncoder");
+        props.put("serializer.class", "com.tangzq.producer.serializer.ProductSerializer");
+        props.put("key.serializer.class", "kafka.serializer.StringEncoder");
         props.put("metadata.broker.list", "127.0.0.1:9092");
         producer = new kafka.javaapi.producer.Producer<Integer, Product>(new ProducerConfig(props));
         this.topic = topic;
@@ -29,10 +31,10 @@ public class KafkaObjectProducer extends Thread {
         {
             Product prod=new Product();
             prod.setId(123+messageNo);
-            prod.setName("msgName");
-            prod.setCompany("hello");
+            prod.setName("Android系列"+messageNo);
+            prod.setCompany("Google");
             prod.setDate(new Date());
-            System.out.println("Send:" + prod.getId());
+            System.out.println("Send:" + prod.toString());
             producer.send(new KeyedMessage<Integer, Product>(topic, prod));
             messageNo++;
             try {

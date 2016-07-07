@@ -1,11 +1,13 @@
 package com.tangzq.producer.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * 产品Model类
  */
-public class Product {
+public class Product implements Serializable{
+
     private int id;
     private String name;
     private String company;
@@ -41,5 +43,15 @@ public class Product {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", company='" + company + '\'' +
+                ", date=" + date +
+                '}';
     }
 }

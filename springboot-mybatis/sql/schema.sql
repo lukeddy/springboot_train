@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS sysuser(id integer, name VARCHAR(255), age integer, password varchar(60));

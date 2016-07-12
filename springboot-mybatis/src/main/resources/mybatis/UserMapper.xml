@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tangzq.mapper.UserMapper">
+ 
+  <select id="findUserInfo" resultType="com.tangzq.model.User">
+    select id, name, age,password from sysuser;
+  </select>
+
+  <select id="findUserById" resultType="com.tangzq.model.User" parameterType="java.lang.Integer">
+    select * from sysuser where id=#{id}
+  </select>
+
+  <insert id="insertUser" parameterType="com.tangzq.model.User" useGeneratedKeys="true" keyProperty="id">
+    insert INTO sysuser (id,name,age,password) VALUES (#{id},#{name},#{age},#{password})
+  </insert>
+ 
+</mapper>

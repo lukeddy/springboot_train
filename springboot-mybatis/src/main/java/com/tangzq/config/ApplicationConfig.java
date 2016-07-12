@@ -31,6 +31,7 @@ public class ApplicationConfig {
     }
 
     /**
+     * //TODO http://blog.csdn.net/isea533/article/details/50359390
      * MyBatis Session工厂
      * @return
      * @throws Exception

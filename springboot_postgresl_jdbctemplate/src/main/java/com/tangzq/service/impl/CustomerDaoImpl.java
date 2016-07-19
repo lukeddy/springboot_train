@@ -56,4 +56,11 @@ public class CustomerDaoImpl implements CustomerDao {
     public void delete(int id) {
         jdbcTemplate.update("delete from customers where id=?", new Object[]{id},new int[]{java.sql.Types.INTEGER});
     }
+
+    @Override
+    public boolean isExist(int id) {
+        Integer cnt = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM customers WHERE id = ?", Integer.class, id);
+        return cnt != null && cnt > 0;
+    }
 }

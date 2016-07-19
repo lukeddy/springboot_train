@@ -12,4 +12,6 @@ public interface CustomerDao {
     public List<Customer> findAll();
     public void update(Customer user);
     public void delete(int id);
+
+    public boolean isExist(int id);
 }

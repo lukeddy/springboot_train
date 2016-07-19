@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import javax.sql.DataSource;
+
 /**
  * JdbcTemplate配置
  */
@@ -18,14 +20,20 @@ public class ApplicationConfig {
     private String password;
     private String driverClassName;
 
+//    @Bean
+//    public DriverManagerDataSource dataSource(){
+//        DriverManagerDataSource dataSource=new DriverManagerDataSource();
+//        dataSource.setUrl(url);
+//        dataSource.setUsername(username);
+//        dataSource.setPassword(password);
+//        dataSource.setDriverClassName(driverClassName);
+//        return dataSource;
+//    }
+
     @Bean
-    public DriverManagerDataSource dataSource(){
-        DriverManagerDataSource dataSource=new DriverManagerDataSource();
-        dataSource.setUrl(url);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-        dataSource.setDriverClassName(driverClassName);
-        return dataSource;
+    @ConfigurationProperties(prefix="spring.datasource")
+    public DataSource dataSource() {
+        return new org.apache.tomcat.jdbc.pool.DataSource();
     }
 
     @Bean

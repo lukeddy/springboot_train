@@ -26,7 +26,7 @@ public class MyAPIController {
     private ProductService productService;
 
 
-    @ApiOperation(value = "产品列表", httpMethod = "GET", notes = "获取所有产品API！")
+    @ApiOperation(value = "产品列表", httpMethod = "GET", notes = "获取所有产品API！",tags = "接口1")
     @RequestMapping(method = RequestMethod.GET, path="/list", produces = "application/json")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "成功"),
@@ -39,7 +39,7 @@ public class MyAPIController {
     }
 
 
-    @ApiOperation(value = "问候一下", httpMethod = "GET", notes = "这里只是做测试的API！")
+    @ApiOperation(value = "问候一下", httpMethod = "GET", notes = "这里只是做测试的API！",tags = "接口2")
     @RequestMapping(method = RequestMethod.GET, path="/greeting", produces = "application/json")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "name", value = "用户名", required = false, dataType = "string", paramType = "query", defaultValue="如,小王")

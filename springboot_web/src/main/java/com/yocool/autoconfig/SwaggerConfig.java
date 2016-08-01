@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
@@ -24,11 +25,18 @@ public class SwaggerConfig {
      */
     @Bean
     public Docket newsApi() {
+//        return new Docket(DocumentationType.SWAGGER_2)
+//                .groupName("myapi")
+//                .apiInfo(apiInfo())
+//                .select()
+//                .paths(PathSelectors.regex("/api.*"))
+//                .build();
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("myapi")
+                .groupName("collectors")
                 .apiInfo(apiInfo())
                 .select()
-                .paths(PathSelectors.regex("/api.*"))
+                .apis(RequestHandlerSelectors.basePackage("com.yocool.controller.api"))
+                .paths(PathSelectors.any())
                 .build();
     }
 

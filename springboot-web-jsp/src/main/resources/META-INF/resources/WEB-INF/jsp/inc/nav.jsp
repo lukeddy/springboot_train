@@ -9,6 +9,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="${contextPath}/product/list" >产品列表</a></li>
                     <li><a href="${contextPath}/product/add" >创建产品</a></li>
+                    <li><a href="${contextPath}/i18n" >国际化(i18n)</a></li>
                     <li><a href="${contextPath}/swagger-ui.html" target="_blank">API文档</a></li>
                 </ul>
             </div>

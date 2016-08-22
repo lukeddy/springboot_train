@@ -18,7 +18,7 @@ public class IndexController {
     public String welcome(Map<String, Object> model) {
         model.put("time", new Date());
         model.put("message", this.message);
-        return "welcome";
+        return "index";
     }
 
     @RequestMapping("/foo")

@@ -42,3 +42,9 @@ springboot-web-swagger2.iml
 /springboot_angular/.idea
 /springboot_angular/.mvn
 /springboot_angular/logs
+/springboot-web-jsp/logs
+/springboot-elasticsearch/data
+/springboot-elasticsearch/target
+/springboot-elasticsearch/springboot-elasticsearch.iml
+/springboot-elasticsearch/.idea
+.mvn

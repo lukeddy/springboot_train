@@ -48,3 +48,9 @@ springboot-web-swagger2.iml
 /springboot-elasticsearch/springboot-elasticsearch.iml
 /springboot-elasticsearch/.idea
 .mvn
+/springboot-mybatis-jsp-sitemesh/logs
+/springboot-mybatis-jsp-sitemesh/*.iml
+/springboot-http-rpc/*.iml
+/springboot-http-rpc/client/*.iml
+/springboot-http-rpc/api/api.iml
+/springboot-http-rpc/server/server.iml

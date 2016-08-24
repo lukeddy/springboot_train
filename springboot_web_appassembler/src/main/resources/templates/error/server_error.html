@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--/*/ <th:block th:include="common/headerinc :: head"></th:block> /*/-->
+    <title>Getting Started: Serving Web Content</title>
+</head>
+<body>
+<!--/*/ <th:block th:include="common/nav :: header"></th:block> /*/-->
+  <div class="container">
+      <div class="alert alert-error">
+          <h2>请求<span th:text="${url}"></span>发生了如下错误：</h2>
+          <br/>
+          <p th:text="${exception}">
+          </p>
+      </div>
+  </div>
+</body>
+</html>

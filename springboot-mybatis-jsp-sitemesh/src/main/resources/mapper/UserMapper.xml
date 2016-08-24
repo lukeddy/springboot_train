@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yocool.dao.UserDao">
+	<!-- 根据ID获取用户	-->
+	<select id="getById" parameterType="long" resultType="User">
+		select u.id as id, 
+			u.name as name, 
+			u.password as password, 
+			u.age as age, 
+			r.id as "role.id",
+			r.name as "role.name"
+		from user u
+		left join role r on (r.id=u.role_id)
+		where u.id=#{id}
+	</select>
+
+	<!-- 查询所有用户 -->
+	<select id="getAll" resultType="User">
+		select u.id as id, 
+			u.name as name, 
+			u.password as password, 
+			u.age as age, 
+			r.id as "role.id",
+			r.name as "role.name"
+		from user u
+		left join role r on (r.id=u.role_id)
+	</select>
+
+	<select id="findByLoginName" parameterType="String" resultType="User">
+		select id, name, password, age, role_id as "role.id"
+		from user
+		where name=#{name}
+	</select>
+
+	<!-- 保存用户 -->
+	<insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+		insert into user ( name, password, age, role_id )
+		values (
+		#{name}, #{password}, #{age}, #{role.id})
+	</insert>
+	
+	<!-- 更新用户 -->
+	<update id="update" parameterType="User" >
+		update user
+		set name = #{name}
+			,password = #{password}
+			,age = #{age}
+			,role_id = #{role.id}
+		where id = #{id}
+	</update>
+
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="long">
+	     delete from user where id=#{id}
+	</delete>
+</mapper> 

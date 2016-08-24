@@ -1,0 +1,40 @@
+spring: 
+  main.show-banner: false
+  mvc: 
+    view:
+      prefix: /WEB-INF/pages/
+      suffix: .jsp
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/school
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+    sqlScriptEncoding: UTF-8
+
+#---------------------------------
+
+shiro:
+  realm: com.yocool.config.ShiroDbRealm
+  loginUrl: /login
+  successUrl: /
+  unauthorizedUrl: /login
+  filterChainDefinitions:
+    "/login": authc
+    "/logout": logout
+    "/static/**": anon
+    "/**": authc    
+
+
+#---------------------------------
+    
+mybatis: 
+  config: classpath:/mybatis-config.xml
+  typeAliasesPackage: com.yocool.entity
+  mapperLocations: classpath:mapper/*.xml
+
+#---------------------------------
+
+logging: 
+  file: logs/demo.log
+  level: DEBUG
+  

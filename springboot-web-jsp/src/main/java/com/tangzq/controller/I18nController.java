@@ -30,7 +30,7 @@ public class I18nController {
      * @return
      */
     @RequestMapping("/change")
-    public String msg(){
+    public String msg(String lang){
         Locale locale = LocaleContextHolder.getLocale();
         return messageSource.getMessage ("api.success.message", null, locale );
     }

@@ -17,6 +17,8 @@ import org.springframework.context.annotation.Configuration;
  * HTTPS相关配置
  * https证书生成方法参考：
  * http://www.cnblogs.com/xinzhao/p/4950689.html
+ * 测试地址：http://localhost:[http端口]/[应用名称]或者https://localhost:[https端口]/[应用名称]
+ * 这里的应用名称跟application.properties中server.context-path配置值一致
  */
 //@Configuration
 public class HttpsConfig {

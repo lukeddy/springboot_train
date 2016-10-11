@@ -8,7 +8,7 @@
 <!--/*/ <th:block th:include="common/nav :: header"></th:block> /*/-->
 <div class="container">
     <h3>添加产品详情：</h3>
-    <form action="/product/add" method="post">
+    <form th:action="@{/product/add}" method="post">
         <p>编号：<input type="text" name="id"/></p>
         <p>名称：<input type="text" name="prodName"/></p>
         <p>厂商：<input type="text" name="prodCompany"/></p>
@@ -19,7 +19,7 @@
         </p>
     </form>
     <br/>
-    <a href="/product/list">返回列表</a>
+    <a th:href="@{/product/list}">返回列表</a>
 </div>
 </body>
 </html>

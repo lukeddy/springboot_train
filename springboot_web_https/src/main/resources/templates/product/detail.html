@@ -12,7 +12,7 @@
     <p>厂商：<span th:text="${product.prodCompany}">厂家</span></p>
     <p>名称：<span th:text="${product.prodDesc}">详情</span></p>
     <br/>
-    <a href="/product/list">返回列表</a>
+    <a th:href="@{/product/list}">返回列表</a>
 </div>
 </body>
 </html>

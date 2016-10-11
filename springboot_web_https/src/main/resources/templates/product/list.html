@@ -22,8 +22,8 @@
             <td th:text="${prod.prodName}">Oranges</td>
             <td th:text="${prod.prodCompany}">Company</td>
             <td>
-                <a th:href="${ '/product/detail/' + prod.id}">详情</a>
-                <a th:href="${ '/product/del/' + prod.id}">删除</a>
+                <a th:href="@{${ '/product/detail/' + prod.id}}">详情</a>
+                <a th:href="@{${ '/product/del/' + prod.id}}">删除</a>
             </td>
         </tr>
     </table>

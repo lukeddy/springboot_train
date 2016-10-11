@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header">
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" th:href="@{/}">首页</a>
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" th:href="@{/product/list}">产品列表</a></li>
+                        <li><a href="#" th:href="@{/product/add}">创建产品</a></li>
+                        <li><a href="#" th:href="@{/swagger-ui.html}" target="_blank">API文档</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+</html>

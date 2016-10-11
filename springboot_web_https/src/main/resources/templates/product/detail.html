@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--/*/ <th:block th:include="common/headerinc :: head"></th:block> /*/-->
+    <title>详情</title>
+</head>
+<body>
+<!--/*/ <th:block th:include="common/nav :: header"></th:block> /*/-->
+<div class="container">
+    <h3>产品详情：</h3>
+    <p>名称：<span th:text="${product.prodName}">名称</span></p>
+    <p>厂商：<span th:text="${product.prodCompany}">厂家</span></p>
+    <p>名称：<span th:text="${product.prodDesc}">详情</span></p>
+    <br/>
+    <a href="/product/list">返回列表</a>
+</div>
+</body>
+</html>

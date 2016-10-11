@@ -54,3 +54,8 @@ springboot-web-swagger2.iml
 /springboot-http-rpc/client/*.iml
 /springboot-http-rpc/api/api.iml
 /springboot-http-rpc/server/server.iml
+/springboot-jsp-ip-parser/springboot-jsp-ip-parser.iml
+/springboot-jsp-ip-parser/logs
+/springboot_web_https/demo.iml
+/springboot_web_https/.idea
+/springboot_web_https/logs

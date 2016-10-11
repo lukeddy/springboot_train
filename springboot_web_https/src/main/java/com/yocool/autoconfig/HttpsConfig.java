@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
  * https证书生成方法参考：
  * http://www.cnblogs.com/xinzhao/p/4950689.html
  */
-@Configuration
+//@Configuration
 public class HttpsConfig {
 
     /**

@@ -19,7 +19,7 @@
        <br>
        服务器消息: ${message}
        <br>
-       <img src="${contextPath}/api/v1/verifycode/12313.jpg" id="verifyCode" style="cursor: pointer;">
+       <img src="${contextPath}/api/v1/verifycode/12313.jpg" id="verifyCode" style="cursor: pointer;" width="180" height="45">
    </div>
 </body>
 </html>

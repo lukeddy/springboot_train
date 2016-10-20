@@ -18,7 +18,17 @@
        JSTL URL: ${url}
        <br>
        服务器消息: ${message}
+       <br>
+       <img src="${contextPath}/api/v1/verifycode/12313.jpg" id="verifyCode" style="cursor: pointer;">
    </div>
 </body>
 </html>
 <jsp:include page="inc/footerinc.jsp"></jsp:include>
+<script>
+    $(function(){
+        $('#verifyCode').click(function(){
+            var imgURL="${contextPath}/api/v1/verifycode/"+new Date().getTime()+".jpg";
+            $(this).attr("src",imgURL);
+        });
+    });
+</script>

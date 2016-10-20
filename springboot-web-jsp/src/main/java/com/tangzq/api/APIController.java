@@ -3,11 +3,17 @@ package com.tangzq.api;
 import com.tangzq.api.response.Result;
 import com.tangzq.model.Product;
 import com.tangzq.service.ProductService;
+import com.tangzq.util.VerifyCodeUtils;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -23,6 +29,10 @@ public class APIController {
 
 
     private static final String APT_TAG="测试接口";
+    private static final String VERIFY_CODE_SESSION_ATTR = "WEBCENTER_LOGIN_VERIFY_CODE";
+
+    @Value("${com.tangzq.config.verifyCodeLength}")
+    private int verifyCodeLength;
 
     @Autowired
     private ProductService productService;
@@ -56,5 +66,21 @@ public class APIController {
         return Result.success("你好，"+name,"服务端反悔了消息");
     }
 
+
+    @RequestMapping(value = "/verifycode/{clientTime}.jpg", method = RequestMethod.GET)
+    @ApiOperation(value = "生成验证码", httpMethod = "GET", notes = "生成验证码", tags = APT_TAG)
+    public void verifyCode(HttpServletRequest request, HttpServletResponse response,
+                           @ApiParam(required = true, name = "clientTime", value = "客户端的时间戳") @PathVariable("clientTime") Long clientTime)
+            throws IOException {
+        response.setHeader("Pragma", "No-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setDateHeader("Expires", 0);
+        response.setContentType("image/jpeg");
+
+        String verifyCode = VerifyCodeUtils.generateVerifyCode(verifyCodeLength);
+        HttpSession session = request.getSession();
+        session.setAttribute(VERIFY_CODE_SESSION_ATTR, verifyCode.toLowerCase());
+        VerifyCodeUtils.outputImage(50 * verifyCodeLength, 80, response.getOutputStream(),verifyCode);
+    }
 
 }

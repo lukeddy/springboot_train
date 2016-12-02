@@ -137,19 +137,6 @@
                         <callback>com.tangzq.callback.CustFlywayCallback</callback>
                     </callbacks>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.postgresql</groupId>
-                        <artifactId>postgresql</artifactId>
-                        <version>9.4.1208</version>
-                    </dependency>
-                    <!--依赖库作为项目引用，因为在项目启动时也需要执行migrate-->
-                    <!--<dependency>-->
-                        <!--<groupId>org.flywaydb</groupId>-->
-                        <!--<artifactId>flyway-core</artifactId>-->
-                        <!--<version>4.0.3</version>-->
-                    <!--</dependency>-->
-                </dependencies>
             </plugin>
         </plugins>
     </build>

@@ -31,23 +31,7 @@ public class BootstrapHelper implements ApplicationListener<ContextRefreshedEven
       logger.info("环境："+globalConfig.getEnv());
       logger.info("测试配置1："+globalConfig.getTestURL());
       logger.info("测试配置2："+globalConfig.getEnv());
-      //在这里初始化数据库
-      initDatabase();
       logger.info("项目启动初始化工作完成！Great!");
     }
 
-    /**
-     * 使用Flyway初始换数据库
-     */
-    private void initDatabase(){
-        ResourceBundle applicationProperties = ResourceBundle.getBundle("application");
-        Flyway flyway = new Flyway();
-        flyway.setDataSource(
-                applicationProperties.getString("spring.datasource.url"),
-                applicationProperties.getString("spring.datasource.username"),
-                applicationProperties.getString("spring.datasource.password"));
-        flyway.setBaselineOnMigrate(true);
-        flyway.migrate();
-        logger.info("初始换数据库完成！");
-    }
 }

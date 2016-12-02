@@ -128,14 +128,11 @@
                 <version>4.0.3</version>
                 <configuration>
                     <driver>org.postgresql.Driver</driver>
-                    <url>jdbc:postgresql://10.0.0.202:5432/testdb</url>
-                    <user>root</user>
-                    <password>123456</password>
+                    <url>jdbc:postgresql://10.0.0.202:5432/testdb?stringtype=unspecified</url>
+                    <user>test</user>
+                    <password>123</password>
                     <schemas>public</schemas>
-                    <basedir>db/migration</basedir>
-                    <callbacks>
-                        <callback>com.tangzq.callback.CustFlywayCallback</callback>
-                    </callbacks>
+                    <basedir>db/migration/postgres</basedir>
                 </configuration>
             </plugin>
         </plugins>

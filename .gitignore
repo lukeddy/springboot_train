@@ -59,3 +59,9 @@ springboot-web-swagger2.iml
 /springboot_web_https/demo.iml
 /springboot_web_https/.idea
 /springboot_web_https/logs
+/springboot-mongo-httpinvoke/*.iml
+/springboot-mongo-httpinvoke/logs
+/springboot-mongo-httpinvoke/.idea
+/springboot-mybatis-postgresql-flyway/logs
+/springboot-mybatis-postgresql-flyway/springboot-mybatis-postgresql-flyway.iml
+/springboot-mybatis-postgresql-flyway/sql

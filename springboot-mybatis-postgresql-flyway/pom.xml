@@ -132,7 +132,7 @@
                     <user>test</user>
                     <password>123</password>
                     <schemas>public</schemas>
-                    <basedir>db/migration/postgres</basedir>
+                    <locations>db/migration/postgres</locations>
                 </configuration>
             </plugin>
         </plugins>

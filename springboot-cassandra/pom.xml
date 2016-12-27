@@ -23,14 +23,15 @@
 		<java.version>1.8</java.version>
 		<cassandra-driver.version>3.0.0</cassandra-driver.version>
 		<cassandra-driver-netty.version>4.0.33.Final</cassandra-driver-netty.version>
-		<spring-cassandra.version>1.4.0.yqj</spring-cassandra.version>
+		<spring-cassandra.version>1.4.3-3.1.0.RELEASE</spring-cassandra.version>
+		<spring-data-commons.version>1.12.5.RELEASE</spring-data-commons.version>
 	</properties>
 
 	<dependencies>
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-data-cassandra</artifactId>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-cassandra</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -41,6 +42,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.10</version>
+			<!-- 编译时依赖 -->
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-handler</artifactId>
@@ -77,6 +87,11 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-cassandra</artifactId>
 			<version>${spring-cassandra.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+			<version>${spring-data-commons.version}</version>
 		</dependency>
 	</dependencies>
 	

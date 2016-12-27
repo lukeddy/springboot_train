@@ -1,48 +1,84 @@
 package com.yocool;
 
-import com.datastax.driver.core.utils.UUIDs;
-import com.yocool.dao.PersonRepository;
-import com.yocool.model.Person;
+import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.cassandra.CassandraProperties;
+import org.springframework.cassandra.core.keyspace.CreateIndexSpecification;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.data.cassandra.convert.MappingCassandraConverter;
+import org.springframework.data.cassandra.core.CassandraAdminTemplate;
+import org.springframework.data.cassandra.mapping.CassandraMappingContext;
+import org.springframework.data.cassandra.mapping.CassandraPersistentEntity;
+import org.springframework.data.cassandra.mapping.Column;
+import org.springframework.data.cassandra.mapping.Indexed;
+
+import java.lang.reflect.Field;
 
 @SpringBootApplication(scanBasePackages = "com.yocool")
-public class SpringbootCassandraApplication implements CommandLineRunner {
+
+public class SpringbootCassandraApplication implements CommandLineRunner,ApplicationListener<ContextRefreshedEvent> {
+
+	private static final Logger logger = LoggerFactory.getLogger(SpringbootCassandraApplication.class);
 
 	@Autowired
-	private PersonRepository personRepository;
+	private CassandraProperties cassandraProperties;
+
+	private ApplicationContext applicationContext;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootCassandraApplication.class, args);
 	}
 
 	@Override
-	public void run(String... strings) throws Exception {
-		System.out.println("开始初始化数据.。。。");
-//		this.personRepository.deleteAll();
-
-		//添加
-//		this.personRepository.save(new Person(UUIDs.random().toString(),"露西李",18));
-//		this.personRepository.save(new Person(UUIDs.timeBased().toString(),"丽丽王",20));
-//		this.personRepository.save(new Person(UUIDs.timeBased().toString(),"思妍李",26));
-//		this.personRepository.save(new Person(UUIDs.timeBased().toString(),"晓晓",20));
-
-		// 查询
-//		System.out.println("Customers found with findAll():");
-//		System.out.println("-------------------------------");
-//		for (Person person : this.personRepository.findAll()) {
-//			System.out.println(person);
-//		}
-//		System.out.println();
-
-		//按照名字查询
-//		System.out.println("Customer found with findByFirstName('Alice'):");
-//		System.out.println("--------------------------------");
-//		System.out.println(this.personRepository.findByName("晓晓"));
-
-
-		System.out.println("初始化数据完成。。。");
+	public void onApplicationEvent(ContextRefreshedEvent context) {
+		applicationContext=context.getApplicationContext();
 	}
+
+
+	@Override
+	public void run(String... strings) throws Exception {
+		logger.info("开始初始化Cassandra表和索引.。。。");
+		createCassandraTable();
+		logger.info("初始化Cassandra表和索引完成。。。");
+	}
+
+	protected void createCassandraTable() {
+		Cluster cluster = Cluster.builder().addContactPoints(cassandraProperties.getContactPoints()).build();
+		Session session = cluster.connect(cassandraProperties.getKeyspaceName());
+		CassandraAdminTemplate adminTemplate =new CassandraAdminTemplate(session,new MappingCassandraConverter());
+		CassandraMappingContext mappingContext = applicationContext.getBean(CassandraMappingContext.class);
+		mappingContext.getPersistentEntities().forEach(item -> {
+			Class<?> entityClass = item.getType();
+			logger.debug("Tring create cassandra table {} for entity class {}, maybe no effect!",
+					item.getTableName().toCql(), entityClass.getName());
+			adminTemplate.createTable(true, item.getTableName(), entityClass, null);
+			createCassandraTableIndex(adminTemplate, item, entityClass);
+		});
+	}
+
+	protected void createCassandraTableIndex(CassandraAdminTemplate adminTemplate, CassandraPersistentEntity<?> entity,
+											 Class<?> entityClass) {
+		CreateIndexSpecification createIndex = null;
+		for (Field field : entityClass.getDeclaredFields()) {
+			if (field.isAnnotationPresent(Indexed.class)) {
+				String columnName = field.getName();
+				if (field.isAnnotationPresent(Column.class)) {
+					columnName = field.getAnnotation(Column.class).value();
+				}
+				createIndex = CreateIndexSpecification.createIndex("index_" + columnName).columnName(columnName)
+						.tableName(entity.getTableName()).ifNotExists();
+				logger.debug("Create index for column {} in {} table!", columnName, entity.getTableName());
+				adminTemplate.execute(createIndex);
+			}
+		}
+	}
+
 }

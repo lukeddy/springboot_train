@@ -29,9 +29,8 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/loginPage",method = RequestMethod.GET)
-    public ModelAndView loginPage(@RequestParam Optional<String> error) {
-        log.debug("Getting login page, error={}", error);
-        return new ModelAndView("login", "error", error);
+    public String loginPage() {
+        return "login";
     }
 
     @RequestMapping(value = "/doLogin",method = RequestMethod.POST)

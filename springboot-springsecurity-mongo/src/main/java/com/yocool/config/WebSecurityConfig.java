@@ -22,9 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * Created by sang on 2017/12/17.
- */
+
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
@@ -53,9 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/","/loginPage","/doLogin", "/images/**", "/webjars/**").permitAll()
-                .antMatchers("/book/**").authenticated()
-                .antMatchers("/dashboard/**").authenticated()
+                .antMatchers("/book/**","/dashboard/**").authenticated()
                 .antMatchers("/admin/**").hasAuthority("超级管理员")
                 .anyRequest().fullyAuthenticated()
                 .and()
@@ -75,7 +71,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .rememberMe()
                 .and()
-                    .exceptionHandling().accessDeniedHandler(getAccessDeniedHandler());
+                    .csrf().disable().exceptionHandling().accessDeniedHandler(getAccessDeniedHandler());
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/","/loginPage","/doLogin", "/images/**", "/webjars/**");
     }
 
     @Bean

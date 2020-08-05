@@ -72,3 +72,13 @@ springboot-springsecurity/mvnw
 springboot-springsecurity/mvnw.cmd
 springboot-jjwt-demo/springboot-jwt-demo.iml
 springboot-mybatis-postgresql-flyway-maven-plugin/springboot-mybatis-postgresql-flyway (1).iml
+springbook-kafka/springboot-kafka-demo.iml
+springbook-kafka2/springbook-kafka2.iml
+springboot-exception-handler/springboot-exception-handler.iml
+springboot-httpinvoke/springboot-httpinvoke.iml
+springboot-jsp-ip-parser/springboot-jsp-ip-parser.iml
+springboot-mybatis-postgresql-flyway/springboot-mybatis-postgresql-flyway.iml
+springboot-mybatis/springboot-mybatis.iml
+springboot-springsecurity-mongo/springboot-springsecurity-mongo.iml
+springboot-swagger/springboot-swagger.iml
+springboot_web_appassembler/appassembler-demo.iml

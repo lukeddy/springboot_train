@@ -24,7 +24,7 @@
 		<cassandra-driver.version>3.0.0</cassandra-driver.version>
 		<cassandra-driver-netty.version>4.0.33.Final</cassandra-driver-netty.version>
 		<spring-cassandra.version>1.4.3-3.1.0.RELEASE</spring-cassandra.version>
-		<spring-data-commons.version>1.12.5.RELEASE</spring-data-commons.version>
+		<spring-data-commons.version>1.13.13.RELEASE</spring-data-commons.version>
 	</properties>
 
 	<dependencies>

@@ -22,9 +22,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<cassandra-driver.version>3.0.0</cassandra-driver.version>
-		<cassandra-driver-netty.version>4.0.33.Final</cassandra-driver-netty.version>
+		<cassandra-driver-netty.version>4.1.45.Final</cassandra-driver-netty.version>
 		<spring-cassandra.version>1.4.3-3.1.0.RELEASE</spring-cassandra.version>
-		<spring-data-commons.version>1.12.5.RELEASE</spring-data-commons.version>
+		<spring-data-commons.version>2.3.1.RELEASE</spring-data-commons.version>
 	</properties>
 
 	<dependencies>

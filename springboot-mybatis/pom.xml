@@ -77,7 +77,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.1.43</version>
+            <version>1.2.73</version>
         </dependency>
 
         <!--swagger2 depencency-->
